@@ -92,10 +92,5 @@
     const currentPage = ref(1)//当前页面
     const pageSize = ref(10)//每页条数
 
-    const handleSizeChange = (val) => {
-        console.log(`${val} items per page`)
-    }
-    const handleCurrentChange = (val) => {
-        console.log(`current page: ${val}`)
-    }
+    
 </script>
