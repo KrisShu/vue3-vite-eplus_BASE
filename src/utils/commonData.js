@@ -12,12 +12,12 @@ export const menuList =[
             {
                 name:'菜单1-1',
                 path:'/customer/test',
-                children:[
-                    {
-                        name:'菜单1-1-1',
-                        path:'',
-                    }
-                ]
+                
+            },
+            {
+                name:'菜单1-2',
+                path:'/customer/test2',
+                
             },
             
         ]

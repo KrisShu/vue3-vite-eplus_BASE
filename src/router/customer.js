@@ -18,7 +18,14 @@ export const customerRouters ={
               title: "客户记录",
             }
         },
-        
+        {
+            path: "test2",
+            name: "customer-test2",
+            component: () => import('@/views/customer/test2.vue'),
+            meta: {
+              title: "客户记录",
+            }
+        },
     ]
 
 }

@@ -1,5 +1,5 @@
 <template>
-    <el-table :data="tableData" style="width: 100%" height="250">
+    <el-table :data="tableData" style="width: 100%" height="300">
         <el-table-column fixed type="selection" width="55" />
         <el-table-column prop="date" label="Date" width="150" />
         <el-table-column prop="name" label="Name" width="120" />
@@ -25,15 +25,66 @@
       :page-sizes="[10, 20, 30, 40]"
       layout="total, sizes, prev, pager, next, jumper"
       :total="400"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
+      @size-change="pagination.handleSizeChange"
+      @current-change="pagination.handleCurrentChange"
     />
 </template>
 
 <script setup>
     import { ref } from 'vue'
+    import usePagination from '@/hooks/pagination'
+    let pagination = usePagination()
     const tableData = [{
             date: '2016-05-03',
+            name: 'Tom',
+            state: 'CaliforniaCaliforniaCaliforniaCaliforniaCaliforniaCaliforniaCaliforniaCaliforniaCaliforniaCaliforniaCaliforniaCaliforniaCaliforniaCalifornia',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+        },
+        
+        {
+            date: '2016-05-02',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+        },
+        {
+            date: '2016-05-02',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+        },
+        {
+            date: '2016-05-02',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+        },
+        {
+            date: '2016-05-02',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+        },
+        {
+            date: '2016-05-02',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+        },
+        {
+            date: '2016-05-02',
             name: 'Tom',
             state: 'California',
             city: 'Los Angeles',
@@ -90,7 +141,13 @@
         },
     ]
     const currentPage = ref(1)//当前页面
-    const pageSize = ref(10)//每页条数
+    const pageSize = ref(20)//每页条数
+    
+    
+    const initTable = ()=>{
+        console.log("pagination",pagination.pageData.pageNo)
+    }
+    pagination.createChangePaginationCb(initTable)
 
     
 </script>
