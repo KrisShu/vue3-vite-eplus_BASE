@@ -472,7 +472,7 @@ html {
   }
   
   /*弹性盒子布局*/
-  .flex-wrap {
+  .flex {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
