@@ -16,7 +16,7 @@
                 <div :class="['loading-box', { hide: !data.loading }]">
                     <img :src="loadingSvg" />
                 </div>
-                <div :class="['info-box', { show: infoBoxShow }, { fail: infoBoxFail }]">{{ infoText }}</div>
+                <div :class="['info-box', { show: data.infoBoxShow }, { fail: data.infoBoxFail }]">{{ data.infoText }}</div>
                 <div :class="['flash', { show: data.isSuccess }]"
                     :style="`transform: translateX(${data.isSuccess ? `${props.canvasWidth + 100}px` : '-50px'}) skew(-30deg, 0);`">
                 </div>
@@ -44,7 +44,6 @@
 
     import { ref,reactive,computed,watch,defineEmits,onMounted,onBeforeUnmount,getCurrentInstance } from "vue";
 
-    console.log("loadingSvg",loadingSvg)
     const data = reactive({
                 mouseDown: false, // 鼠标是否在按钮上按下
                 startWidth: 50, // 鼠标点下去时父级的width
@@ -101,8 +100,7 @@
             }
     })
     onMounted(()=>{
-        // console.log("instance",pageInstance.refs)
-        document.body.appendChild(ctx.$root.$el);
+            // document.body.appendChild(ctx.$root.$el);
             document.addEventListener("mousemove", onRangeMouseMove, false);
             document.addEventListener("mouseup", onRangeMouseUp, false);
             document.addEventListener("touchmove", onRangeMouseMove, {
@@ -118,7 +116,7 @@
     // beforeDestroy
     onBeforeUnmount(()=>{
             clearTimeout(data.timer1);
-            document.body.removeChild(ctx.$root.$el);
+            // document.body.removeChild(ctx.$root.$el);
             document.removeEventListener("mousemove", onRangeMouseMove, false);
             document.removeEventListener("mouseup", onRangeMouseUp, false);
             document.removeEventListener("touchmove", onRangeMouseMove, {
@@ -139,7 +137,8 @@
 	})
     const styleWidth = computed(()=>{
         const w = data.startWidth + data.newX - data.startX;
-        return w < 50 ? 50 : w > props.canvasWidth ? props.canvasWidth : w;
+        console.log("")
+        return w < 50 ? 50 : (w > props.canvasWidth ? props.canvasWidth : w);
     })
     const emit = defineEmits(['close','success','fail'])
     // 关闭
@@ -424,8 +423,8 @@
                 // 偏差
                 const x = Math.abs(
                     data.pinX -
-                    (styleWidth - 50) +
-                    20 * ((styleWidth - 50) / (props.canvasWidth - 50)) -
+                    (styleWidth.value - 50) +
+                    20 * ((styleWidth.value - 50) / (props.canvasWidth - 50)) -
                     3
                 );
                 if (x < 10) {
@@ -436,6 +435,7 @@
                     data.isCanSlide = false;
                     data.isSuccess = true;
                     // 成功后准备关闭
+                    console.log("成功")
                     clearTimeout(data.timer1);
                     data.timer1 = setTimeout(() => {
                         // 成功的回调
@@ -448,6 +448,7 @@
                     data.infoBoxShow = true;
                     data.isCanSlide = false;
                     // 失败的回调
+                    console.log("失败")
                     emit("fail", x);
                     // 800ms后重置
                     clearTimeout(data.timer1);

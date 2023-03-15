@@ -9,4 +9,5 @@
 
 <style lang="scss">
 @import "./assets/styles/normalize.css";
+@import "./assets/styles/common.scss";
 </style>

@@ -47,12 +47,15 @@
     const CommonStore = useCommonStore()
     const router = useRouter()
     const route = useRoute()
+    console.log("12",route)
     const onRoutes = computed(() => {
-        return route.path;
+        let activePath = route.meta?.activeMenu ? route.meta?.activeMenu : route.path;
+        return activePath;
     });
-    
+    // const onRoutes = ref('')
     const handleSelect = (key,keyPath) => {
         console.log(key, keyPath)
+        // onRoutes.value = key
     }
     const handleClose = (key,keyPath) => {
         console.log(key, keyPath)

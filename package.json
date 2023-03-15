@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^4",
     "axios": "^1.2.2",
+    "crypto-js": "^4.1.1",
+    "echarts": "^5.4.1",
     "element-plus": "^2.2.28",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.2",

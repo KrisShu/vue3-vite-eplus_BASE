@@ -34,6 +34,7 @@
 									登录
 								</el-button>
 							</el-form-item>
+							
 						</div>
 						
 					</el-form>
@@ -46,7 +47,9 @@
 					:canvasHeight="155" 
 					:canvasWidth="305"
 					@success="onSuccess"
-					@close="onClose" />
+					@close="onClose" >
+					</Vcode>
+					
 				</div>
 			</div>
 
@@ -63,6 +66,15 @@
     import Img3 from '@/assets/images/code3.png';
     import Img4 from '@/assets/images/code4.png';
     import Img5 from '@/assets/images/code5.png';
+	import Api from '@/apis/index';
+	import { aesEncrypt } from "@/utils/crypt"; //加密解密
+	import {useRouter} from 'vue-router';
+	import {useCommonStore} from '@/store/commonData';
+	
+
+	// import { ElMessage } from 'element-plus'
+	const router = useRouter()
+	const CommonStore = useCommonStore()
 	const loginForm = reactive({
 		phone:'',
 		password:''
@@ -83,26 +95,34 @@
 	let isShow = ref(false)
 	const codeimgs= reactive([Img1, Img2, Img3, Img4, Img5]) 
 
+
+
 	const loginFormRef = ref(null)
-	const handleSubmitLogin = async (formEl)=>{
-		console.log(formEl)
-		await formEl.validate((valid,fields)=>{
+	const handleSubmitLogin =  (formEl)=>{
+		loginFormRef.value.validate((valid,fields)=>{
 			if (valid) {
 				isShow.value = true
 			} else {
 			console.log('error submit!', fields)
 			}
 		})
-		// await loginFormRef.value.validate((valid,fields)=>{
-		// 	if (valid) {
-		// 		isShow.value = true
-		// 	} else {
-		// 	console.log('error submit!', fields)
-		// 	}
-		// })
 		
 	}
-	const onSuccess = ()=>{
+	const onSuccess = (val)=>{
+		Api.apiLogin({
+			userName: loginForm.phone,
+			//需要注意大小写转换 密码需要加密
+            password: aesEncrypt(loginForm.password ?.toLowerCase ?.())
+		}).then(res=>{
+			console.log("res",router)
+			CommonStore.token = res.data.userInfo.token
+			CommonStore.userInfo = res.data.userInfo
+			router.push({
+				path:'/',
+			})
+
+		})
+
 
 	}
 	const onClose = ()=>{

@@ -28,11 +28,15 @@
       @size-change="pagination.handleSizeChange"
       @current-change="pagination.handleCurrentChange"
     />
+
+    <el-button type="primary" size="default" @click="routerPush"></el-button>
+    
 </template>
 
 <script setup>
     import { ref } from 'vue'
     import usePagination from '@/hooks/pagination'
+    import {useRouter} from 'vue-router';
     let pagination = usePagination()
     const tableData = [{
             date: '2016-05-03',
@@ -148,6 +152,12 @@
         console.log("pagination",pagination.pageData.pageNo)
     }
     pagination.createChangePaginationCb(initTable)
-
     
+    const router = useRouter()
+    const routerPush =()=>{
+        router.push({
+				path:'/',
+				
+			})
+    }
 </script>

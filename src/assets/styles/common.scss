@@ -1,0 +1,115 @@
+
+$bg-color: #343434;
+$mian-font-color:#303133;
+$btn-bg-color: #303133;
+
+
+.uni-width-100{
+    width: 100%;
+}
+.el-button{
+    border-color: #C9C9C9 !important;
+}
+.uni-content-wrap{
+    position: relative;
+    padding: 0px 28px;
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 94px;
+    .uni-btn-wrap{
+        display: flex;
+        align-items: center;
+        .page-name{
+            font-size: 18px;
+            font-weight: bold;
+            color: #303133;
+            margin-right: 22px;
+        }
+    }
+    .uni-content-container{
+       
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px 24px 32px 24px;
+    }
+}
+
+// table
+.el-table .el-table__cell{
+    padding: 12px 0 !important;
+}
+.el-table__header-wrapper tr th{
+    background-color: #ECEFF6 !important;
+}
+.table-no-data{
+    width: 600px;
+}
+.uni-pagination{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    background-color: #ffffff;
+    height: 94px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 56px);
+    border-top: #d7d7d7 1px solid;
+    padding-right: 30px;
+}
+
+
+//筛选抽屉
+.uni-screen-wrap{
+    .uni-screen-cap{
+        padding: 20px 12px;
+        border-bottom: 1px solid #EFEFFA;
+        font-size: 18px;
+        font-family: PingFang SC;
+        font-weight: bold;
+        color: #303133;
+    }
+    .uni-screen-body{
+        padding: 12px;
+    }
+}
+// 详情抽屉
+.uni-detail-wrap{
+    height: 100%;
+    .uni-detail-cap{
+        padding: 14px 24px;
+        border-bottom: 12px solid #F5F5F7;
+    }
+    .uni-detail-body{
+        width: 100%;
+        background-color: #F5F5F7;
+        .uni-grid-content{
+            padding: 24px;
+            width: 50%;
+            max-height: calc(100vh - 72px);
+            box-sizing: border-box;
+            background-color: #fff;
+            &:first-of-type{
+                margin-right: 8px;
+            }
+        }
+    }
+}
+
+//表单
+.el-form{
+    .el-form-item{
+        margin-bottom: 24px;
+        .el-form-item__label{
+            font-size: 14px;
+            color: #303133;
+            .required-lable{
+                margin-left: 8px;
+                color: #D7777B;
+                font-size: 14px;
+            }
+        }
+    }
+}
+

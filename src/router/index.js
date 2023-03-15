@@ -1,12 +1,15 @@
 import { createRouter,createWebHashHistory } from "vue-router";
 import {customerRouters} from './customer'
+import {showDataRouters} from './showData'
 import { useCommonStore } from '../store/commonData'
+import home from '../views/home/index.vue'
+import homeIndex from '../views/home/home.vue'
 //hash模式路由
 const routes =[
     {
         path:'/',
         name:'home',
-        component:() => import('@/views/home/index.vue'),
+        component:home,
         meta: {
             title: "首页"
         },
@@ -15,14 +18,13 @@ const routes =[
             {
                 path: "home-index",
                 name: "home-index",
-                component: () => import('@/views/home/home.vue'),
+                component: homeIndex,
                 meta: {
                   title: "首页",
                 }
             },
             customerRouters,
-            
-
+            showDataRouters,
         ]
     },
     {
@@ -33,7 +35,7 @@ const routes =[
             title: "登录"
         },
 
-    }
+    },
 ]
 const router = new createRouter({
     history: createWebHashHistory(), //vue3是用history控制路由模式，vue2是mode
@@ -46,7 +48,7 @@ const router = new createRouter({
    */
 router.beforeEach((to, from, next) => {
     const CommonStore = useCommonStore()
-    if (!CommonStore.tooken && to.path !== "/login") {
+    if (!CommonStore.token && to.path !== "/login") {
         next("/login");
     } else {
         next();

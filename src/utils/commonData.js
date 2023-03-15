@@ -21,5 +21,17 @@ export const menuList =[
             },
             
         ]
-    }
+    },
+    {
+        name:'数据',
+        key:3,
+        path:'/showData',
+        children:[
+            {
+                name:'案例列表',
+                path:'/showData/case',
+            },
+            
+        ]
+    },
 ]

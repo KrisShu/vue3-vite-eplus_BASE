@@ -8,6 +8,7 @@ export default function(){
     const handleSizeChange = (val) => {
         console.log(`${val} items per page`)
         pageSize.value = val 
+        _cb()
     }
     //改变页码
     const handleCurrentChange = (val) => {

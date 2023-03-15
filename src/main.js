@@ -13,10 +13,9 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 // 创建pinia实例
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
-
-
-
 const app = createApp(App)
 app.use(router) //将router挂载到vue实例
 app.use(pinia)// 挂载到 vue 实例
+// app.use(VueTinymce)// 挂载到 vue 实例
+// app.config.globalProperties.$tinymce = tinymce;
 app.mount('#app')
