@@ -103,7 +103,7 @@
 			if (valid) {
 				isShow.value = true
 			} else {
-			console.log('error submit!', fields)
+				console.log('error submit!', fields)
 			}
 		})
 		
@@ -241,7 +241,7 @@
 		}
 	}
 
-	.rule-input ::v-deep {
+	:deep(.rule-input)  {
 		.el-input__inner {
 			border: 0;
 			border-bottom: 1px solid rgba(0, 0, 0, 0.09);
@@ -253,7 +253,7 @@
 		}
 	}
 
-	.rule-input-edit ::v-deep {
+	:deep(.rule-input-edit)  {
 		.el-input__inner {
 			border: 0;
 			border-radius: 0px;

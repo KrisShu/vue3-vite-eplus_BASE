@@ -32,6 +32,9 @@
 </script>
 
 <style lang="scss" scoped>
+.el-aside{
+	z-index: 99;
+}
 .el-header{
 	padding: 0;
 	height: 48px !important;

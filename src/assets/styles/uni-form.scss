@@ -1,0 +1,64 @@
+// 公共表单组件样式
+.uni-form-contain{
+  .uni-form-right{
+    width: 356px;
+    margin-left: 20px;
+  }
+  .uni-form-alone{
+    width: 700px;
+  }
+  .uni-wid-item100{
+    width: 100%;
+    background: #fff;
+  }
+  .uni-form-item {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    .uni-form-title {
+      line-height: 1em;
+      padding-bottom: 19px;
+      border-bottom: 1px solid #EEEEEE;
+      margin-bottom: 10px;
+      color:#232323;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  // 重写form表单中的tabs样式
+  .rewrite-tabs {
+    margin-top: -20px;
+    ::deep(.el-tabs__item){
+      
+        height: 60px;
+        line-height: 60px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    ::deep(.el-tabs__nav-wrap::after){
+      
+        height: 1px;
+        background-color: #eee;
+    }
+  }
+}
+.uni-form-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  width: 100%;
+  height: 52px;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #fff;
+}
+.uni-form-footer-place {
+  width: 100%;
+  height: 32px;
+}
+
+
+

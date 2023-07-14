@@ -12,7 +12,7 @@
                     <el-button @click="deleteEvent" link type="primary" size="small">
                         Detail
                     </el-button>
-                    <el-button  @click="gotoDetail" link type="primary" size="small">Edit</el-button>
+                    <el-button v-permiss="'test'"  @click="gotoDetail" link type="primary" size="small">Edit</el-button>
                 </template>
             </el-table-column>
         </el-table>
