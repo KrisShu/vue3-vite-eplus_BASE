@@ -47,6 +47,7 @@ export default defineConfig({
 		}),
 	],
 	server:{
+		hmr: true,  // 开启热更新
 		port:8080
 	}
 

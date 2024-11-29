@@ -5,8 +5,8 @@
 export default function directive(app){
     app.directive('permiss', {
         mounted(el, binding) {
-            console.log("el",el)
-            console.log("binding",binding)
+            // console.log("el",el)
+            // console.log("binding",binding)
             // if (!permiss.key.includes(String(binding.value))) {
             //     el['hidden'] = true;
             // }

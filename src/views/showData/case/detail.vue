@@ -153,9 +153,8 @@
 									</span>
 								</div>
 							</template>
-							<!-- <view-new-tag origin="tips" type="5" :tips="caseForm.tips" placeholder="请输入标签"
-								@getTipsInfo="getTipsInfo">
-							</view-new-tag> -->
+							
+							<enter-tag origin="tips" :tags="caseForm.tips" @dispatchTags="getTags"></enter-tag>
 
 						</el-form-item>
 						<el-form-item>
@@ -171,29 +170,25 @@
 									</span>
 								</div>
 							</template>
-							<!-- <view-new-tag origin="matchtips" type="5" :tips="caseForm.matchtips" placeholder="请输入标签"
-								@getTipsInfo="getTipsInfo">
-							</view-new-tag> -->
+							<enter-tag  placeholder="请输入匹配标签" origin="matchtips" :tags="caseForm.matchtips" @dispatchTags="getTags"></enter-tag>
 						</el-form-item>
-						<el-form-item prop="pageView" ref="pageView">
+						<p>浏览量 （显示为两者之和）</p>
+						<el-form-item prop="pageViewReal" ref="pageViewReal">
 							<template v-slot:label>
 								<div class="uni-label">
-									<span class="label-cap">浏览量（显示为两者之和）</span>
+									<span class="label-cap">真实</span>
 								</div>
 							</template>
-							<div class="pageView-wrap flex j-between">
-								<div class="pageView-contain flex j-between">
-									<p>真实</p>
-									<el-input disabled v-model="caseForm.pageViewReal"></el-input>
+								<el-input disabled v-model="caseForm.pageViewReal"></el-input>
+						</el-form-item>
+						<el-form-item prop="pageViewVirtual" ref="pageViewVirtual">
+							<template v-slot:label>
+								<div class="uni-label">
+									<span class="label-cap">虚拟</span>
 								</div>
-								<div class="pageView-contain flex j-between">
-									<p>虚拟</p>
-									<el-form-item prop="pageViewVirtual">
-										<el-input v-model="caseForm.pageViewVirtual" placeholder="请输入虚拟数值">
-										</el-input>
-									</el-form-item>
-								</div>
-							</div>
+							</template>
+								<!-- <el-input-number :controls="false" v-model="caseForm.pageViewVirtual" :precision="0"  :max="100000" /> -->
+								<el-input type="number" v-model="caseForm.pageViewVirtual"></el-input>
 						</el-form-item>
 					</div>
 				</div>
@@ -201,8 +196,7 @@
 		</el-form>
 		<div class="uni-form-footer uni-text-right">
 			<el-button>返 回</el-button>
-			<el-button @click="saveForm" type="primary" >保 存</el-button >
-			<el-button @click="saveForm2" type="primary" >保 存</el-button >
+			<el-button @click="saveForm" type="primary" >保 存</el-button>
 		</div>
 		<div class="uni-form-footer-place"></div>
 	</div>
@@ -212,7 +206,8 @@
 	import {reactive, ref } from 'vue';
 	import{InfoFilled} from '@element-plus/icons-vue';
 	import viewTinymce from '@/components/viewTinymce/index.vue';
-	import imageUploadPreview from '@/components/imageUploadPreview/index.vue'
+	import imageUploadPreview from '@/components/imageUploadPreview/index.vue';
+	import enterTag from '@/components/enterTag/index.vue';
 	const caseForm = reactive({
 		// 应用的编码*
         applyCode: "",
@@ -260,10 +255,15 @@
 	const activeName = ref('xmys')
 
 	const saveForm = ()=>{
-		caseForm.contentJs = '修改值'
+		console.log("caseForm",caseForm)
 	}
-	const saveForm2 = ()=>{
-		console.log(caseForm.contentJs)
+	
+
+	const getTags = (tagInfo)=>{
+		console.log("tagInfo",tagInfo)
+		caseForm[tagInfo.origin] = tagInfo.val;
+		console.log("caseForm[tagInfo.origin]",caseForm[tagInfo.origin])
+
 	}
 
 	const getUploadFileInfo = (file)=>{

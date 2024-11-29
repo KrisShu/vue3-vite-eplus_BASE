@@ -10,9 +10,9 @@
             <el-table-column fixed="right" label="Operations" width="120">
                 <template #default>
                     <el-button @click="deleteEvent" link type="primary" size="small">
-                        Detail
+                        delete
                     </el-button>
-                    <el-button v-permiss="'test'"  @click="gotoDetail" link type="primary" size="small">Edit</el-button>
+                    <el-button v-permiss="'test'"  @click="gotoDetail" link type="primary" size="small">detail</el-button>
                 </template>
             </el-table-column>
         </el-table>

@@ -2,30 +2,37 @@
     客户模块路由
 */
 
-export const customerRouters ={
-    path:'/customer',
-    name:'customer',
-    component:() => import('@/views/customer/index.vue'),
+export const customerRouters = {
+    path: '/customer',
+    name: 'customer',
+    component: () => import('@/views/customer/index.vue'),
     meta: {
-        title: "客户"
+        title: '客户',
     },
-    children:[
+    children: [
         {
-            path: "test",
-            name: "customer-test",
+            path: 'test',
+            name: 'customer-test',
             component: () => import('@/views/customer/test.vue'),
             meta: {
-              title: "客户记录",
-            }
+                title: '客户记录',
+            },
         },
         {
-            path: "test2",
-            name: "customer-test2",
+            path: 'test2',
+            name: 'customer-test2',
             component: () => import('@/views/customer/test2.vue'),
             meta: {
-              title: "客户记录",
-            }
+                title: '客户记录',
+            },
         },
-    ]
-
-}
+        {
+            path: 'changeColorDemo',
+            name: 'changeColorDemo',
+            component: () => import('@/views/customer/changeColorDemo.vue'),
+            meta: {
+                title: '改变主题色',
+            },
+        },
+    ],
+};
