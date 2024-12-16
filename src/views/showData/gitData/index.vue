@@ -24,6 +24,11 @@
                 <p>git checkout branch_name</p>
             </div>
             <div>
+                <p>拉取远程分支：</p>
+                <p>git fetch origin branch_name</p>
+                <p>git pull origin branch_name</p>
+            </div>
+            <div>
                 <p>删除分支:</p>
                 <p>git branch -d <分支名称></p>
                 <p>git branch -D <分支名称></p>
