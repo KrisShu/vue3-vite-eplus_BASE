@@ -34,6 +34,7 @@
             </div>
             <div>
                 <p>提交分支</p>
+                <p>git push origin branch_name</p>
             </div>
         </div>
     </div>
