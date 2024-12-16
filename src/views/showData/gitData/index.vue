@@ -33,7 +33,13 @@
                 <p>git push origin --delete branch_name</p>
             </div>
             <div>
-                <p>提交分支</p>
+                <p>提交分支：</p>
+                <p>git push origin branch_name</p>
+            </div>
+            <div>
+                <p>合并分支：</p>
+                <p>git checkout 对应的分支名</p>
+                <p>git merge 需要合并的分支名</p>
             </div>
         </div>
     </div>
