@@ -1,22 +1,18 @@
 /* 
     文件：公共数据仓储
 */
-import {defineStore} from 'pinia'
-export const useCommonStore = defineStore('commonData',{
-    state:()=>{
-        return{
-            menuIscollapse:false,//菜单是否展开，默认不展开false
-            need:'nested',
-            token:'',//登录token
-            userInfo:{},//
-        }
+import { defineStore } from 'pinia';
+export const useCommonStore = defineStore('commonData', {
+    state: () => {
+        return {
+            menuIscollapse: false, //菜单是否展开，默认不展开false
+            need: 'nested',
+            token: '', //登录token
+            userInfo: {}, //
+        };
     },
-    getters:{
-
-    },
-    actions:{
-
-    },
+    getters: {},
+    actions: {},
     // 所有数据持久化
     // persist:true
 
@@ -27,7 +23,6 @@ export const useCommonStore = defineStore('commonData',{
         // 修改为 sessionStorage，默认为 localStorage
         storage: window.localStorage,
         // 部分持久化状态的点符号路径数组，[]意味着没有状态被持久化(默认为undefined，持久化整个状态),把需要持久化的值的key添加进数组即可
-        paths: ['menuIscollapse','need','token','userInfo'],
+        paths: ['need', 'token', 'userInfo'],
     },
-
-})
+});
