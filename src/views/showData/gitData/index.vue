@@ -4,8 +4,12 @@
         <div>
             <h2>git分支</h2>
             <div>
-                <p>查看所有分支:</p>
+                <p>查看所有本地分支:</p>
                 <p>git branch</p>
+            </div>
+            <div>
+                <p>查看所有远程分支:</p>
+                <p>git branch -r</p>
             </div>
             <div>
                 <p>创建新分支:</p>
