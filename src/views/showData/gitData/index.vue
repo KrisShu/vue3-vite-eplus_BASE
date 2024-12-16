@@ -32,6 +32,9 @@
                 <p>删除远程分支：</p>
                 <p>git push origin --delete branch_name</p>
             </div>
+            <div>
+                <p>提交分支</p>
+            </div>
         </div>
     </div>
 </template>
