@@ -30,8 +30,8 @@
             </div>
             <div>
                 <p>删除分支:</p>
-                <p>git branch -d <分支名称></p>
-                <p>git branch -D <分支名称></p>
+                <p>git branch -d branch_name</p>
+                <p>git branch -D branch_name</p>
             </div>
             <div>
                 <p>删除远程分支：</p>
