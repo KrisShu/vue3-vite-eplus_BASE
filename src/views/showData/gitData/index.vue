@@ -24,6 +24,11 @@
                 <p>git checkout branch_name</p>
             </div>
             <div>
+                <p>拉取远程分支：</p>
+                <p>git fetch origin branch_name</p>
+                <p>git pull origin branch_name</p>
+            </div>
+            <div>
                 <p>删除分支:</p>
                 <p>git branch -d <分支名称></p>
                 <p>git branch -D <分支名称></p>
@@ -31,6 +36,15 @@
             <div>
                 <p>删除远程分支：</p>
                 <p>git push origin --delete branch_name</p>
+            </div>
+            <div>
+                <p>合并分支：</p>
+                <p>git checkout 对应的分支名</p>
+                <p>git merge 需要合并的分支名</p>
+            </div>
+            <div>
+                <p>提交分支至远程厂库</p>
+                <p>git push origin branch_name</p>
             </div>
         </div>
     </div>
