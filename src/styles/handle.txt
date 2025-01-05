@@ -23,8 +23,39 @@
 // 切换主题时 获取不同的主题色值
 @mixin themeify {
     /**
-   ‌ 备注：见handle.txt  
-   **/
+   ‌     SASS的@each指令‌用于遍历一个列表或映射中的每个元素，并对每个元素执行相同的操作。
+        语法：@each $variable in <list or map> {
+                // statements
+                }
+        参数：$variable是一个变量，用于存储列表或映射中的每个元素的值。
+        案例1：
+            // $sizes: 40px, 50px, 80px;
+            // @each $size in $sizes {
+            //     .icon-#{$size} {
+            //         font-size: $size;
+            //         height: $size;
+            //         width: $size;
+            //     }
+            // }
+
+            编译后：
+            .icon-40px { font-size: 40px; height: 40px; width: 40px; }
+            .icon-50px { font-size: 50px; height: 50px; width: 50px; }
+            .icon-80px { font-size: 80px; height: 80px; width: 80px; }
+        案例2：
+            $icons: (eye: "\f112", start: "\f12e", stop: "\f12f");
+            @each $name, $glyph in $icons {
+                .icon-#{$name}:before {
+                    display: inline-block;
+                    font-family: "Icon Font";
+                    content: $glyph;
+                }
+            }
+            编译后：
+            .icon-eye:before { display: inline-block; font-family: "Icon Font"; content: "\f112"; }
+            .icon-start:before { display: inline-block; font-family: "Icon Font"; content: "\f12e"; }
+            .icon-stop:before { display: inline-block; font-family: "Icon Font"; content: "\f12f"; }
+    **/
 
     @each $theme-name, $theme-map in $themes {
         //*  !global 把局部变量强升为全局变量
@@ -69,4 +100,3 @@
         border-color: themed($color) !important;
     }
 }
-

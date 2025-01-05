@@ -1,0 +1,55 @@
+<template>
+    <div>
+        <h1>git相关操作</h1>
+        <div>
+            <h2>git分支</h2>
+            <div>
+                <p>查看所有本地分支:</p>
+                <p>git branch</p>
+            </div>
+            <div>
+                <p>查看所有远程分支:</p>
+                <p>git branch -r</p>
+            </div>
+            <div>
+                <p>创建新分支:</p>
+                <p>git branch branch_name</p>
+            </div>
+            <div>
+                <p>创建新分支并自动切换到对应分支:</p>
+                <p>git checkout -b branch_name</p>
+            </div>
+            <div>
+                <p>切换分支:</p>
+                <p>git checkout branch_name</p>
+            </div>
+            <div>
+                <p>拉取远程分支：</p>
+                <p>git fetch origin branch_name</p>
+                <p>git pull origin branch_name</p>
+            </div>
+            <div>
+                <p>删除分支:</p>
+                <p>git branch -d branch_name</p>
+                <p>git branch -D branch_name</p>
+            </div>
+            <div>
+                <p>删除远程分支：</p>
+                <p>git push origin --delete branch_name</p>
+            </div>
+            <div>
+                <p>合并分支：</p>
+                <p>git checkout 对应的分支名</p>
+                <p>git merge 需要合并的分支名</p>
+            </div>
+            <div>
+                <p>提交分支至远程厂库</p>
+                <p>git push origin branch_name</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup></script>
+
+<style></style>

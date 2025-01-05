@@ -1,7 +1,7 @@
 <template>
     <div class="aaa">
         <button @click="change">切换按钮</button>
-        <div class="content">文字内容展示</div>
+        <div class="content">文字内容展示 sss</div>
     </div>
 </template>
 

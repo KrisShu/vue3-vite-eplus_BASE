@@ -32,6 +32,14 @@ export const menuList = [
                 name: '案例列表',
                 path: '/showData/case',
             },
+            {
+                name: 'git相关操作',
+                path: '/showData/git',
+            },
+            {
+                name: 'grid布局',
+                path: '/showData/grid',
+            },
         ],
     },
 ];
