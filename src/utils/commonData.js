@@ -40,6 +40,26 @@ export const menuList = [
                 name: 'grid布局',
                 path: '/showData/grid',
             },
+            {
+                name: 'svgdemo',
+                path: '/showData/svg',
+            },
+            {
+                name: '拖拽表单',
+                path: '/showData/dragForm',
+            },
+            {
+                name: '浮点精度计算',
+                path: '/showData/float',
+            },
+            {
+                name: '按钮防抖',
+                path: '/showData/debounceBtn',
+            },
+            {
+                name: '音乐播放器',
+                path: '/showData/musicPlayer',
+            },
         ],
     },
 ];

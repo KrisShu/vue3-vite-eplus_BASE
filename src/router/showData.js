@@ -42,5 +42,45 @@ export const showDataRouters = {
                 title: 'grid布局列表',
             },
         },
+        {
+            path: 'svg',
+            name: 'svg-list',
+            component: () => import('@/views/showData/svgdemo/index.vue'),
+            meta: {
+                title: 'svgdemo',
+            },
+        },
+        {
+            path: 'dragForm',
+            name: 'drag-form',
+            component: () => import('@/views/showData/dragForm/index.vue'),
+            meta: {
+                title: 'dragForm',
+            },
+        },
+        {
+            path: 'float',
+            name: 'float',
+            component: () => import('@/views/showData/floatNumber/index.vue'),
+            meta: {
+                title: '浮点精度计算',
+            },
+        },
+        {
+            path: 'debounceBtn',
+            name: 'debounce-btn',
+            component: () => import('@/views/showData/btnCase/index.vue'),
+            meta: {
+                title: '按钮防抖',
+            },
+        },
+        {
+            path: 'musicPlayer',
+            name: 'music-player',
+            component: () => import('@/views/showData/musicPlay/index.vue'),
+            meta: {
+                title: '音乐播放器',
+            },
+        },
     ],
 };

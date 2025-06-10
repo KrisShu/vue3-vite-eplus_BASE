@@ -46,6 +46,35 @@
                 <p>提交分支至远程厂库</p>
                 <p>git push origin branch_name</p>
             </div>
+            <div>
+                <h4>git pull</h4>
+                <p>
+                    git pull 命令用于从远程仓库获取最新的更改并合并到当前分支，
+                    它其实是git fetch 和 git merge 的组合。
+                </p>
+            </div>
+            <div>
+                <h4>git fetch</h4>
+                <p>
+                    git fetch
+                    命令从远程仓库获取最新的代码到本地，但不会自动合并代码
+                </p>
+            </div>
+            <div>
+                <p>
+                    ！！！！！！！！！以下内容按实际情况处理！！！不同公司有不同的要求
+                </p>
+                <p>执行git pull 时会导致git历史混乱</p>
+            </div>
+            <div>
+                <h4>解决方案</h4>
+                <p>rebase命令使用</p>
+                <p>git pull --rebase</p>
+                <div>
+                    <p>// git pull默认使用变基操作</p>
+                    git config --global pull.rebase true
+                </div>
+            </div>
         </div>
     </div>
 </template>

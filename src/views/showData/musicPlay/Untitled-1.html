@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>网易云音乐播放器 - 滚动效果</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: linear-gradient(135deg, #1a1a2e, #16213e);
+                color: #fff;
+                padding: 20px;
+            }
+
+            .music-player {
+                width: 380px;
+                background: rgba(30, 30, 46, 0.8);
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+                overflow: hidden;
+                backdrop-filter: blur(10px);
+            }
+
+            .player-header {
+                background: #e94560;
+                padding: 25px 30px;
+                text-align: center;
+            }
+
+            .player-header h1 {
+                font-size: 24px;
+                font-weight: 600;
+                letter-spacing: 1px;
+            }
+
+            .album-cover {
+                width: 240px;
+                height: 240px;
+                margin: 30px auto 25px;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+                position: relative;
+                animation: rotate 20s linear infinite;
+                animation-play-state: paused;
+            }
+
+            .album-cover.playing {
+                animation-play-state: running;
+            }
+
+            .album-cover img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .song-info {
+                width: 300px;
+                height: 60px;
+                margin: 0 auto 30px;
+                overflow: hidden;
+                position: relative;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.05);
+                padding: 0 15px;
+            }
+
+            .song-info-container {
+                position: absolute;
+                white-space: nowrap;
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .song-info.animated .song-info-container {
+                animation: scrollText 15s linear infinite;
+            }
+
+            .song-title {
+                font-size: 20px;
+                font-weight: 600;
+                margin-right: 10px;
+            }
+
+            .song-artist {
+                font-size: 16px;
+                color: #e94560;
+                font-weight: 500;
+            }
+
+            .divider {
+                margin: 0 10px;
+                color: rgba(255, 255, 255, 0.3);
+            }
+
+            .controls {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                padding: 20px 0 35px;
+            }
+
+            .btn {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .btn:hover {
+                background: rgba(233, 69, 96, 0.3);
+                transform: scale(1.1);
+            }
+
+            .btn:active {
+                transform: scale(0.95);
+            }
+
+            .btn i {
+                font-size: 20px;
+            }
+
+            .play-btn {
+                width: 60px;
+                height: 60px;
+                background: #e94560;
+            }
+
+            .play-btn i {
+                font-size: 24px;
+            }
+
+            .progress-container {
+                padding: 0 30px 25px;
+            }
+
+            .progress-bar {
+                width: 100%;
+                height: 5px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 5px;
+                overflow: hidden;
+                margin-bottom: 10px;
+            }
+
+            .progress {
+                height: 100%;
+                width: 35%;
+                background: #e94560;
+                border-radius: 5px;
+            }
+
+            .time-info {
+                display: flex;
+                justify-content: space-between;
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            @keyframes rotate {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes scrollText {
+                0% {
+                    transform: translateX(100%);
+                }
+                10% {
+                    transform: translateX(100%);
+                }
+                90% {
+                    transform: translateX(-100%);
+                }
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+
+            .instructions {
+                margin-top: 30px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.05);
+                padding: 15px;
+                border-radius: 10px;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .instructions h3 {
+                color: #e94560;
+                margin-bottom: 10px;
+            }
+
+            .highlight {
+                color: #e94560;
+                font-weight: 600;
+            }
+        </style>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+    </head>
+    <body>
+        <div class="music-player">
+            <div class="player-header">
+                <h1>网易云音乐播放器</h1>
+            </div>
+
+            <div class="album-cover" id="albumCover">
+                <img
+                    src="https://picsum.photos/400?random=1"
+                    alt="Album Cover"
+                />
+            </div>
+
+            <div class="song-info" id="songInfo">
+                <div class="song-info-container" id="songInfoContainer">
+                    <span class="song-title" id="songTitle"
+                        >七里香 (Live at Summer Sonic 2019)</span
+                    >
+                    <span class="divider">-</span>
+                    <span class="song-artist" id="songArtist"
+                        >周杰伦 / 五月天阿信</span
+                    >
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="btn prev-btn">
+                    <i class="fas fa-step-backward"></i>
+                </div>
+                <div class="btn play-btn" id="playBtn">
+                    <i class="fas fa-play" id="playIcon"></i>
+                </div>
+                <div class="btn next-btn">
+                    <i class="fas fa-step-forward"></i>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="time-info">
+                    <span>1:45</span>
+                    <span>4:32</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>实现说明</h3>
+            <p>此效果模拟了网易云音乐PC客户端的歌曲信息滚动：</p>
+            <p>
+                当<span class="highlight">歌名+歌手</span
+                >的总宽度超过容器时，会自动应用滚动动画
+            </p>
+            <p>
+                点击<span class="highlight">播放按钮</span
+                >可播放/暂停音乐（同时控制封面旋转）
+            </p>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const songInfo = document.getElementById('songInfo');
+                const songInfoContainer =
+                    document.getElementById('songInfoContainer');
+                const albumCover = document.getElementById('albumCover');
+                const playBtn = document.getElementById('playBtn');
+                const playIcon = document.getElementById('playIcon');
+                const songTitle = document.getElementById('songTitle');
+                const songArtist = document.getElementById('songArtist');
+
+                // 初始检查是否需要滚动
+                checkTextOverflow();
+
+                // 播放/暂停按钮事件
+                playBtn.addEventListener('click', function () {
+                    if (albumCover.classList.contains('playing')) {
+                        albumCover.classList.remove('playing');
+                        playIcon.classList.remove('fa-pause');
+                        playIcon.classList.add('fa-play');
+                        songInfo.classList.remove('paused');
+                    } else {
+                        albumCover.classList.add('playing');
+                        playIcon.classList.remove('fa-play');
+                        playIcon.classList.add('fa-pause');
+                        songInfo.classList.remove('paused');
+                    }
+                });
+
+                // 当窗口大小变化时重新检查是否需要滚动
+                window.addEventListener('resize', checkTextOverflow);
+
+                // 检查文本是否超出容器
+                function checkTextOverflow() {
+                    const containerWidth = songInfo.offsetWidth;
+                    const textWidth = songInfoContainer.scrollWidth;
+
+                    if (textWidth > containerWidth) {
+                        songInfo.classList.add('animated');
+                    } else {
+                        songInfo.classList.remove('animated');
+                    }
+                }
+
+                // 模拟歌曲切换
+                const songs = [
+                    {
+                        title: '七里香 (Live at Summer Sonic 2019)',
+                        artist: '周杰伦 / 五月天阿信',
+                    },
+                    {
+                        title: '晴天 - 2023 Remastered Version',
+                        artist: '周杰伦',
+                    },
+                    {
+                        title: '夜曲 - 电影《不能说的秘密》主题曲',
+                        artist: '周杰伦',
+                    },
+                    { title: '稻香 - 十周年纪念版', artist: '周杰伦' },
+                    {
+                        title: '告白气球 - 电影《你的名字》中文宣传曲',
+                        artist: '周杰伦',
+                    },
+                ];
+
+                let currentSongIndex = 0;
+
+                document
+                    .querySelector('.next-btn')
+                    .addEventListener('click', function () {
+                        currentSongIndex =
+                            (currentSongIndex + 1) % songs.length;
+                        updateSongInfo();
+                    });
+
+                document
+                    .querySelector('.prev-btn')
+                    .addEventListener('click', function () {
+                        currentSongIndex =
+                            (currentSongIndex - 1 + songs.length) %
+                            songs.length;
+                        updateSongInfo();
+                    });
+
+                function updateSongInfo() {
+                    const song = songs[currentSongIndex];
+                    songTitle.textContent = song.title;
+                    songArtist.textContent = song.artist;
+
+                    // 更新封面图片
+                    const albumCoverImg = albumCover.querySelector('img');
+                    albumCoverImg.src = `https://picsum.photos/400?random=${
+                        currentSongIndex + 2
+                    }`;
+
+                    // 重置动画状态
+                    albumCover.classList.remove('playing');
+                    playIcon.classList.remove('fa-pause');
+                    playIcon.classList.add('fa-play');
+
+                    // 检查是否需要滚动
+                    setTimeout(checkTextOverflow, 10);
+                }
+            });
+        </script>
+    </body>
+</html>
