@@ -1,0 +1,99 @@
+<template>
+    <div class="button-example">
+        <div class="button-row">
+            <el-button>Default</el-button>
+            <el-button type="primary">Primary</el-button>
+            <el-button type="success">Success</el-button>
+            <el-button type="info">Info</el-button>
+            <el-button type="warning">Warning</el-button>
+            <el-button type="danger">Danger</el-button>
+        </div>
+
+        <div class="button-row">
+            <el-button plain>Plain</el-button>
+            <el-button type="primary" plain>Primary</el-button>
+            <el-button type="success" plain>Success</el-button>
+            <el-button type="info" plain>Info</el-button>
+            <el-button type="warning" plain>Warning</el-button>
+            <el-button type="danger" plain>Danger</el-button>
+        </div>
+
+        <div class="button-row">
+            <el-button round>Round</el-button>
+            <el-button type="primary" round>Primary</el-button>
+            <el-button type="success" round>Success</el-button>
+            <el-button type="info" round>Info</el-button>
+            <el-button type="warning" round>Warning</el-button>
+            <el-button type="danger" round>Danger</el-button>
+        </div>
+
+        <div class="button-row">
+            <el-button :icon="Search" circle />
+            <el-button type="primary" :icon="Edit" circle />
+            <el-button type="success" :icon="Check" circle />
+            <el-button type="info" :icon="Message" circle />
+            <el-button type="warning" :icon="Star" circle />
+            <el-button type="danger" :icon="Delete" circle />
+        </div>
+
+        <div>
+            <el-switch v-model="value1" />
+        </div>
+
+        <div>
+            <p class="text-example">
+                我是演示文字
+                <svg class="svg-iocn" aria-hidden="true">
+                    <use :xlink:href="tongchou" />
+                </svg>
+                <svg class="svg-iocn" aria-hidden="true">
+                    <use :xlink:href="dataIcon" />
+                </svg>
+            </p>
+        </div>
+    </div>
+</template>
+
+<script setup>
+    import {
+        Check,
+        Delete,
+        Edit,
+        Message,
+        Search,
+        Star,
+    } from '@element-plus/icons-vue';
+    import { ref } from 'vue';
+
+    import tongchou from '@/assets/icons/tongchou.svg';
+    import dataIcon from '@/assets/icons/data.svg';
+
+    const value1 = ref(true);
+</script>
+
+<style scoped lang="scss">
+    .button-example {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .button-row > * {
+        margin: 0;
+    }
+
+    .text-example {
+        color: #409eff;
+
+        .svg-iocn {
+            fill: currentColor;
+        }
+    }
+</style>

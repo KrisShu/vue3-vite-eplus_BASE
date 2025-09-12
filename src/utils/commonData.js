@@ -60,6 +60,10 @@ export const menuList = [
                 name: '音乐播放器',
                 path: '/showData/musicPlayer',
             },
+            {
+                name: 'elementPlus案例',
+                path: '/showData/elementCase',
+            },
         ],
     },
 ];

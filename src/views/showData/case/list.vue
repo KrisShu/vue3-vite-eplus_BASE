@@ -7,12 +7,12 @@
             <el-table-column label="案例类型" prop="categoryName"></el-table-column>
             <el-table-column label="浏览量" prop="pageView"></el-table-column>
             <el-table-column label="时间" prop="createTime"></el-table-column>
-            <el-table-column fixed="right" label="Operations" width="120">
+            <el-table-column fixed="right" label="Operations" width="220">
                 <template #default>
-                    <el-button @click="deleteEvent" link type="primary" size="small">
+                    <el-button @click="deleteEvent"  type="primary">
                         delete
                     </el-button>
-                    <el-button v-permiss="'test'"  @click="gotoDetail" link type="primary" size="small">detail</el-button>
+                    <el-button v-permiss="'test'"  @click="gotoDetail"  type="primary">detail</el-button>
                 </template>
             </el-table-column>
         </el-table>

@@ -82,5 +82,10 @@ export const showDataRouters = {
                 title: '音乐播放器',
             },
         },
+        {
+            path: 'elementCase',
+            name: 'element-case',
+            component: () => import('@/views/showData/elementCase/index.vue'),
+        },
     ],
 };

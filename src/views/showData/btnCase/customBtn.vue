@@ -1,7 +1,7 @@
 <template>
-    <button :disabled="isLoading" @click="handleClick">
+    <el-button :disabled="isLoading" @click="handleClick">
         {{ isLoading ? 'Loading...' : label }}
-    </button>
+    </el-button>
 </template>
 
 <script>

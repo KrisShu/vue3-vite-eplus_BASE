@@ -7,10 +7,9 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { visualizer } from 'rollup-plugin-visualizer';
 // import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
-
 // https://vitejs.dev/config/
 
-const pathSrc = resolve(__dirname, "src");
+const pathSrc = resolve(__dirname, 'src');
 export default defineConfig(({ mode }) => {
     return {
         resolve: {
@@ -45,7 +44,6 @@ export default defineConfig(({ mode }) => {
                 ],
             }),
             visualizer({ open: true }),
-            
         ],
         // 生产环境配置
         build: {
@@ -64,7 +62,7 @@ export default defineConfig(({ mode }) => {
         },
         server: {
             hmr: true, // 开启热更新
-            port: 8080,
+            port: 8082,
         },
     };
 });
