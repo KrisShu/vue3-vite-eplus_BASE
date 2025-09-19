@@ -5,7 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { visualizer } from 'rollup-plugin-visualizer';
-// import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 // https://vitejs.dev/config/
 
@@ -42,6 +42,13 @@ export default defineConfig(({ mode }) => {
                         // version: "2.1.5",
                     }),
                 ],
+            }),
+            createSvgIconsPlugin({
+                // 指定需要缓存的图标文件夹
+                iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
+                // 指定symbolId格式
+                symbolId: 'icon-[name]',
+                inject: 'body-last', // DOM插入位置
             }),
             visualizer({ open: true }),
         ],

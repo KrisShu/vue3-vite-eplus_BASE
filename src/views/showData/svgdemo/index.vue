@@ -16,6 +16,22 @@
             class="iconfont icon-fantuan-01"
         ></i>
     </div>
+
+    <div>
+        <h2>本地svg使用</h2>
+
+        <svg-icon iconClass="data"></svg-icon>
+
+        <p style="color: red">
+            有颜色的svg
+            <svg-icon iconClass="data"></svg-icon>
+            <svg-icon iconClass="phone"></svg-icon>
+            <svg-icon iconClass="data2"></svg-icon>
+            <svg-icon iconClass="data3"></svg-icon>
+            <svg-icon iconClass="check-circle"></svg-icon>
+        </p>
+        <svg-icon iconClass="check-circle"></svg-icon>
+    </div>
 </template>
 <script setup></script>
 

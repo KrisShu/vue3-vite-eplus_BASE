@@ -1,34 +1,33 @@
-
-export  const messageBox = (callback,title="删除",tipText="确认删除改数据？",icon="Delete")=>{
-    ElMessageBox.confirm(
-        tipText,
-        title,
-        {
-          confirmButtonText: 'OK',
-          cancelButtonText: 'Cancel',
-          type: 'warning',
-          center: true,
+export const messageBox = (
+    callback,
+    title = '删除',
+    tipText = '确认删除改数据？',
+    icon = 'Delete',
+) => {
+    ElMessageBox.confirm(tipText, title, {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning',
+        center: true,
         //   icon: markRaw(icon),
-        }
-      ).then(() => {
+    })
+        .then(() => {
             callback();
         })
         .catch(() => {
-          ElMessage({
-            type: 'info',
-            message: 'Delete canceled',
-          })
-        })
-    
-}
+            ElMessage({
+                type: 'info',
+                message: 'Delete canceled',
+            });
+        });
+};
 
-export const messageAlert = (message,type="success")=>{
-	ElMessage({
-		message,
-		type
-	})
-}
-
+export const messageAlert = (message, type = 'success') => {
+    ElMessage({
+        message,
+        type,
+    });
+};
 
 /**
  * 深度克隆数据
@@ -36,21 +35,25 @@ export const messageAlert = (message,type="success")=>{
  * @authorzhuiyi 2021/04/29
  */
 export function DEEP_CLONE(source) {
-	if (!source || typeof source !== 'object') {
-	  throw new Error('error arguments', 'shallowClone');
-	}
-	var targetObj = source.constructor === Array ? [] : {};
-	for (var keys in source) {
-	  if (source.hasOwnProperty.call(source, keys)) {
-		if (source[keys] && typeof source[keys] === 'object' && !(source[keys] instanceof Date)) {
-		  targetObj[keys] = source[keys].constructor === Array ? [] : {};
-		  targetObj[keys] = DEEP_CLONE(source[keys]);
-		} else {
-		  targetObj[keys] = source[keys];
-		}
-	  }
-	}
-	return targetObj;
+    if (!source || typeof source !== 'object') {
+        throw new Error('error arguments', 'shallowClone');
+    }
+    var targetObj = source.constructor === Array ? [] : {};
+    for (var keys in source) {
+        if (source.hasOwnProperty.call(source, keys)) {
+            if (
+                source[keys] &&
+                typeof source[keys] === 'object' &&
+                !(source[keys] instanceof Date)
+            ) {
+                targetObj[keys] = source[keys].constructor === Array ? [] : {};
+                targetObj[keys] = DEEP_CLONE(source[keys]);
+            } else {
+                targetObj[keys] = source[keys];
+            }
+        }
+    }
+    return targetObj;
 }
 
 /**
@@ -94,10 +97,25 @@ export function debounce(func, wait, immediate) {
         return result;
     };
 }
+// 简化版
+function debounce2(fn, wait, immediate = false) {
+    let timeout;
+    return function (...args) {
+        const context = this;
+        if (timeout) clearTimeout(timeout);
 
-export default{
-    messageBox,
-	messageAlert,
-	DEEP_CLONE
+        if (immediate) {
+            const callNow = !timeout;
+            timeout = setTimeout(() => (timeout = null), wait);
+            if (callNow) fn.apply(context, args);
+        } else {
+            timeout = setTimeout(() => fn.apply(context, args), wait);
+        }
+    };
 }
 
+export default {
+    messageBox,
+    messageAlert,
+    DEEP_CLONE,
+};
